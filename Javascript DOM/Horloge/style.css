@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+}
+
+div#centrage {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100vh;
+    align-items: center;
+}
+
+div#horloge {
+    position: relative;
+    height: 500px;
+    width: 500px;
+    border: solid 40px black;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+div#horloge #aiguille-secondes {
+    position: absolute;
+    height: 2px;
+    width: 48%;
+    top: 50%;
+    left: 50%;
+    background-color: red;
+    transform-origin: left;
+    border-radius: 2px;
+}
+
+div#horloge #aiguille-minutes {
+    position: absolute;
+    height: 4px;
+    width: 45%;
+    top: 50%;
+    left: 50%;
+    background-color: black;
+    transform-origin: left;
+    border-radius: 2px;
+}
+
+div#horloge #aiguille-heures {
+    position: absolute;
+    height: 8px;
+    width: 30%;
+    top: 50%;
+    left: 50%;
+    background-color: black;
+    transform-origin: left;
+    border-radius: 4px;
+}
+
+div.centrage #affichage {
+    display: block;
+    padding: 4px;
+    border: solid 3px black;
+}
+
+#heuresDigit, #minutesDigit, #secondesDigit {
+    font-size: 6rem;
+}
+
+#cadran {
+    position: absolute;
+    z-index: 0;
+    width: 500px;
+}

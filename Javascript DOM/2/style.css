@@ -1,0 +1,31 @@
+@keyframes span {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+div#div {
+    position: relative;
+    height: 200px;
+    width: 400px;
+    border: 2px solid red;
+}
+
+#span-anime {
+    /* margin-top: 50px; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    height: 4px;
+    width: 100px;
+    background-color: green;
+}
+
+#span-anime.animate {
+    animation: span 2s infinite linear;
+}
