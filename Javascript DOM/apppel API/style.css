@@ -1,0 +1,17 @@
+main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-around;
+}
+
+.card {
+    border: solid black 2px;
+    border-radius: 5%;
+    text-align: center;
+    padding: 1rem;
+}
+
+.imageCard {
+    border: solid black 1px;
+}
