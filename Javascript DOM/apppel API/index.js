@@ -1,55 +1,53 @@
-import { fetchData } from './fetch.js'
+import { fetchData, drawCircularGauge } from './fetch.js'
 
+const API_KEY = 'de462d1e145d44e084148f017bf5976d';
 const root = document.querySelector("#root")
-const API_KEY = 
-'de462d1e145d44e084148f017bf5976d';
 const main = document.createElement('main')
 root.append(main)
 
-// // Traitement en amont
-// const post =  [
-//     {
-//         titre: 'test',
-//         content: 'contenu',
-//     },
-//     {
-//         titre: 'test2',
-//         content: 'contenu2',
-//     }
-// ]
-
-
 fetchData({...{url: `https://api.rawg.io/api/games?key=${API_KEY}`}})
-    .then((data) => {
-        data.results
-            .filter((game) => game.rating > 4.4)
-            .map((game) => {
-
-                console.log(game)
-                const card = document.createElement('div');
-                const titreCard = document.createElement('h2');
-                const imageCard = document.createElement('img');
-                const content = document.createElement('ul');
-
-                main.append(card);
-                card.append(titreCard);
-                card.append(imageCard);
-                card.append(content);
-
-                // game.plateforms.map((platform) => {
-                //     const li = document.createElement('li');
-                //     li.innerText = platform.platform.name;
-                //     content.append(li);
-                // });
-
-                card.classList.toggle('card');
-                imageCard.classList.toggle('imageCard');
-                imageCard.src = game.background_image;
-                imageCard.style.width = '500px';
-                titreCard.innerText = game.name;
+    .then((data) => { data.results
+        .filter((game) => game.rating > 3.4)
+        .map((game) => { 
+            
+            const card = document.createElement('div');
+            const header = document.createElement('div')
+            const metacritic = document.createElement('div');
+            const metacriticGauge = document.createElement('canvas');
+            const titre = document.createElement('h2');
+            const image = document.createElement('img');
+            const content = document.createElement('div');
+            const contentPlatform = document.createElement('ul');
+            
+            main.append(card);
+            card.append(header);
+            header.append(titre);
+            header.append(metacritic);
+            metacritic.append(metacriticGauge);
+            card.append(image);
+            card.append(content);
+            content.append(contentPlatform);
+            
+            card.classList.toggle('card');
+            header.classList.toggle('header');
+            image.classList.toggle('imageCard');
+            content.classList.toggle('content');
+            
+            metacriticGauge.id = 'gaugeCanvas';
+            drawCircularGauge(game.metacritic);
+            
+            image.src = game.background_image;
+            titre.innerText = game.name;
+            
+            game.platforms.map((platform) => {
+                const li = document.createElement('li');
+                li.innerText = platform.platform.name;
+                contentPlatform.append(li);
+                contentPlatform.style.textAlign = 'left';
             });
         });
-
+    });
+    
 
 
 

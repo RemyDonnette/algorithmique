@@ -8,10 +8,25 @@ main {
 .card {
     border: solid black 2px;
     border-radius: 5%;
-    text-align: center;
     padding: 1rem;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#gaugeCanvas {
+    width: 150px;
 }
 
 .imageCard {
     border: solid black 1px;
+    width: 500px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.content {
+    display: flex;
 }
