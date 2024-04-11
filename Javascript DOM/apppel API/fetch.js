@@ -22,24 +22,20 @@ export function drawCircularGauge(percentage) {
     const centerY = canvas.height / 2;
     const radius = Math.min(canvas.width, canvas.height) / 3;
 
-    // Clear canvas
     context.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Background Circle
     context.beginPath();
     context.arc(centerX, centerY, radius, 0, 2 * Math.PI);
     context.lineWidth = radius * 0.4;
     context.strokeStyle = '#d3d3d3';
     context.stroke();
 
-    // Progress Arc
     context.beginPath();
     context.arc(centerX, centerY, radius, -0.5 * Math.PI, (percentage / 100) * (2 * Math.PI) - 0.5 * Math.PI);
     context.lineWidth = radius * 0.4;
     context.strokeStyle = '#4caf50';
     context.stroke();
 
-    // Text
     context.fillStyle = '#000';
     context.font = 'bold ' + radius * 0.6 + 'px Arial';
     context.textAlign = 'center';

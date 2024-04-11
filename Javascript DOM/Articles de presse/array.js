@@ -1,16 +1,15 @@
 // Fonction
 export function tabSortedByDate(tab) {
-    const articlesSortedByDate = tab.sort((a, b) => {
+    return tab.sort((a, b) => {
         const dateA = new Date(a.updatedAt);
         const dateB = new Date(b.updatedAt);
         return dateB - dateA;
     })
-    return articlesSortedByDate
 }
 
-export function formatDateToText(dateString) {
+export function formatDateToText(dateTab) {
 
-    const [year, month, day] = dateString.split('/');
+    const [year, month, day] = dateTab.split('/');
     const date = new Date(`${year}/${month}/${day}`);
     const joursSemaine = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
     const mois = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
@@ -44,3 +43,30 @@ export function createArticle(tab) {
         root.append(titre, dateMaj, contenu, image, dateCreation );
     })
 }
+
+
+// const MONTHS = 1;
+// const YEARS = 0;
+// const DAYS = 2;
+// const HOURS = 3;
+// const MINUTES = 4;
+// const SECONDES = 5;
+// const MILLISECONDS = 6;
+
+// function addInterval(date, interval) {
+//   const parts = [date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds(), date.getMilliseconds()];
+//   for (const [unit, value] of Object.entries(interval)) {
+//     parts[unit] += value;
+//   }
+//   return new Date(...parts);
+// }
+
+// const today = new Date();
+
+// const dateFuture = addInterval(today, {
+//   [MONTHS]: 1,
+//   [YEARS]: 1,
+// });
+
+// console.log(today);
+// console.log(dateFuture);

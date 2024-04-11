@@ -7,7 +7,7 @@ root.append(main)
 
 fetchData({...{url: `https://api.rawg.io/api/games?key=${API_KEY}`}})
     .then((data) => { data.results
-        .filter((game) => game.rating > 3.4)
+        .filter((game) => game.rating > 3.6)
         .map((game) => { 
             
             const card = document.createElement('div');
@@ -34,7 +34,8 @@ fetchData({...{url: `https://api.rawg.io/api/games?key=${API_KEY}`}})
             content.classList.toggle('content');
             
             metacriticGauge.id = 'gaugeCanvas';
-            drawCircularGauge(game.metacritic);
+            // drawCircularGauge(game.metacritic);
+            console.log(metacriticGauge)
             
             image.src = game.background_image;
             titre.innerText = game.name;
